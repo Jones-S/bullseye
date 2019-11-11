@@ -9,29 +9,45 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var buttonIsShown: Bool = false
+  @State var buttonIsShown: Bool = false
+  
+  var body: some View {
     
-    var body: some View {
-        VStack {
-           Text("Hello, World!")
-            Button(action: {
-                print("Button pressed")
-                self.buttonIsShown = true
-            }) {
-                Text("Knock Knock")
-            }
-            .alert(isPresented: $buttonIsShown) { () ->
-                Alert in
-                return Alert(title: Text("Who's there"),
-                             message: Text("Who's there"),
-                             dismissButton: .default(Text("Close")))
-            }
+    VStack {
+      HStack {
+        Text("Enter a value close to:")
+        Text("100")
+      }
+      
+      HStack {
+        Slider(value: .constant(10))
+      }
+      
+      HStack {
+        Button(action: {
+          self.buttonIsShown = true
+        }) {
+          Text("Restart")
         }
+        Text("Score:")
+        Text("9999999")
+        
+        Text("Round:")
+        Text("999")
+        
+        Button(action: {
+          self.buttonIsShown = true
+        }) {
+          Text("Info")
+        }
+      }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView().previewLayout(
+      .fixed(width: 896, height: 441))
+  }
 }
