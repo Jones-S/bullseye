@@ -99,7 +99,8 @@ struct ContentView: View {
       
       HStack {
         Button(action: {
-          print("hello")
+          self.score = 0
+          self.round = 1
         }) {
           Text("Restart")
         }
@@ -114,21 +115,21 @@ struct ContentView: View {
         Text("\(round)")
         
         Spacer()
-        Button(action: {
-          self.buttonIsShown = true
-        }) {
+        
+        // Link to another view
+        NavigationLink(destination: OverlayView()) {
           Text("Info")
         }
-        .padding(.bottom, 20)
       }
     }
     .background(Image("pattern"), alignment: .center)
+    .navigationBarTitle("Game")
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView().previewLayout(
-      .fixed(width: 896, height: 441))
+      .fixed(width: 896, height: 414))
   }
 }

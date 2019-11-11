@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DFE656662379ED2400F56B26 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE656652379ED2400F56B26 /* OverlayView.swift */; };
 		DFF0420523799A5600C0C70E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF0420423799A5600C0C70E /* AppDelegate.swift */; };
 		DFF0420723799A5600C0C70E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF0420623799A5600C0C70E /* SceneDelegate.swift */; };
 		DFF0420923799A5600C0C70E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF0420823799A5600C0C70E /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DFE656652379ED2400F56B26 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		DFF0420123799A5600C0C70E /* Bullseye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bullseye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF0420423799A5600C0C70E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFF0420623799A5600C0C70E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				DFF0420F23799A5800C0C70E /* LaunchScreen.storyboard */,
 				DFF0421223799A5800C0C70E /* Info.plist */,
 				DFF0420C23799A5800C0C70E /* Preview Content */,
+				DFE656652379ED2400F56B26 /* OverlayView.swift */,
 			);
 			path = Bullseye;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFF0420523799A5600C0C70E /* AppDelegate.swift in Sources */,
+				DFE656662379ED2400F56B26 /* OverlayView.swift in Sources */,
 				DFF0420723799A5600C0C70E /* SceneDelegate.swift in Sources */,
 				DFF0420923799A5600C0C70E /* ContentView.swift in Sources */,
 			);
