@@ -33,14 +33,28 @@ struct ContentView: View {
     return "Yay"
   }
   
+  struct LabelStyle: ViewModifier {
+    func body(content: Content) -> some View {
+      // Find fonts @ iosfonts.com
+      return content
+        .font(Font.custom("Avenir-Light", size: 25))
+    }
+  }
+  
+  struct StandOutStyle: ViewModifier {
+    func body(content: Content) -> some View {
+      return content
+        .modifier(LabelStyle())
+        .foregroundColor(Color.yellow)
+    }
+  }
+  
   var body: some View {
     VStack {
       Spacer()
       
       HStack {
-        Text("Enter a value close to:")
-          // Find fonts @ iosfonts.com
-          .font(Font.custom("Avenir-Light", size: 25))
+        Text("Enter a value close to:").modifier(LabelStyle())
         Text("\(targetValue)")
       }
       
@@ -89,6 +103,7 @@ struct ContentView: View {
         Spacer()
         Text("Score:")
         Text("\(score)")
+          .modifier(StandOutStyle())
         
         Spacer()
         Text("Round:")
