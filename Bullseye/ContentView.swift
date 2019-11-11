@@ -12,12 +12,18 @@ struct ContentView: View {
   @State var buttonIsShown: Bool = false
   @State var sliderValue: Double = 50.0
   @State var targetValue: Int = Int.random(in: 1...100)
+  @State var score = 0
   
   func calculateScore(target:Int, score:Int) -> Int {
     let difference: Int = abs(target - score)
     let points: Int = 100 - difference
     return points
   }
+  
+  func roundedInt(value:Double) -> Int {
+    return Int(value.rounded())
+  }
+
   
   var body: some View {
     
@@ -26,30 +32,35 @@ struct ContentView: View {
       
       HStack {
         Text("Enter a value close to:")
-        Text("\(self.targetValue)")
+        Text("\(targetValue)")
       }
       
       Spacer()
       
       HStack {
         Text("1")
-        Slider(value: self.$sliderValue, in: 1...100)
+        Slider(value: $sliderValue, in: 1...100)
         Text("100")
       }
       
       Spacer()
       
       Button(action: {
+        // self is needed because we're inside action
         self.buttonIsShown = true
+        self.score = self.score + self.calculateScore(target: self.targetValue, score: self.roundedInt(value: self.sliderValue))
+
       }) {
         Text("Shoot")
       }
       .alert(isPresented: $buttonIsShown) { () -> Alert in
-        let roundedValue: Int = Int(self.sliderValue.rounded())
+        let roundedValue = roundedInt(value: sliderValue)
+
         return Alert(
           title: Text("Great"),
           message: Text("You hit at \(roundedValue)"
-            + "You scored \(calculateScore(target: self.targetValue, score: roundedValue))"
+            + "You scored \(calculateScore(target: targetValue, score: roundedValue))"
+
           ),
           dismissButton: .default(Text("OK")))
       }
@@ -65,7 +76,7 @@ struct ContentView: View {
         
         Spacer()
         Text("Score:")
-        Text("9999999")
+        Text("\(score)")
         
         Spacer()
         Text("Round:")
