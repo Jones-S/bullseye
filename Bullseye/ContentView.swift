@@ -39,6 +39,8 @@ struct ContentView: View {
       
       HStack {
         Text("Enter a value close to:")
+          // Find fonts @ iosfonts.com
+          .font(Font.custom("Avenir-Light", size: 25))
         Text("\(targetValue)")
       }
       
