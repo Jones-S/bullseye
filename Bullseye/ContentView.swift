@@ -9,24 +9,31 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State var buttonIsShown: Bool = false
-  @State var sliderValue: Double = 50.0
-  @State var targetValue: Int = Int.random(in: 1...100)
+  @State var buttonIsShown = false
+  @State var sliderValue = 50.0
+  @State var targetValue = Int.random(in: 1...100)
   @State var score = 0
+  @State var round = 1
   
   func calculateScore(target:Int, score:Int) -> Int {
-    let difference: Int = abs(target - score)
-    let points: Int = 100 - difference
+    let difference = abs(target - score)
+    let points = 100 - difference
     return points
   }
   
   func roundedInt(value:Double) -> Int {
     return Int(value.rounded())
   }
-
+  
+  func generateRandomNumber() -> Int {
+    return Int.random(in: 1...100)
+  }
+  
+  func generateSuccessMessage() -> String {
+    return "Yay"
+  }
   
   var body: some View {
-    
     VStack {
       Spacer()
       
@@ -57,12 +64,15 @@ struct ContentView: View {
         let roundedValue = roundedInt(value: sliderValue)
 
         return Alert(
-          title: Text("Great"),
+          title: Text("\(generateSuccessMessage())"),
           message: Text("You hit at \(roundedValue)"
             + "You scored \(calculateScore(target: targetValue, score: roundedValue))"
 
           ),
-          dismissButton: .default(Text("OK")))
+          dismissButton: .default(Text("OK")) {
+            self.targetValue = self.generateRandomNumber()
+            self.round = self.round + 1
+          })
       }
       
       Spacer()
@@ -80,7 +90,7 @@ struct ContentView: View {
         
         Spacer()
         Text("Round:")
-        Text("999")
+        Text("\(round)")
         
         Spacer()
         Button(action: {
@@ -88,7 +98,6 @@ struct ContentView: View {
         }) {
           Text("Info")
         }
-          
         .padding(.bottom, 20)
       }
     }
