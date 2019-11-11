@@ -14,6 +14,7 @@ struct ContentView: View {
   @State var targetValue = Int.random(in: 1...100)
   @State var score = 0
   @State var round = 1
+  let themeColor = Color(red: 255.0/255.0, green: 115.0/255.0, blue: 115.0/255.0)
   
   func calculateScore(target:Int, score:Int) -> Int {
     let difference = abs(target - score)
@@ -63,6 +64,7 @@ struct ContentView: View {
       HStack {
         Text("1")
         Slider(value: $sliderValue, in: 1...100)
+          .accentColor(themeColor)
         Text("100")
       }
       
@@ -75,6 +77,8 @@ struct ContentView: View {
 
       }) {
         Text("Shoot")
+          .padding(10)
+          .border(Color.black, width: 1)
       }
       .alert(isPresented: $buttonIsShown) { () -> Alert in
         let roundedValue = roundedInt(value: sliderValue)
