@@ -101,6 +101,7 @@ struct ContentView: View {
         .padding(.bottom, 20)
       }
     }
+    .background(Image("pattern"), alignment: .center)
   }
 }
 
