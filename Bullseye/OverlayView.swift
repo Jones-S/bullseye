@@ -10,16 +10,19 @@ import SwiftUI
 
 struct OverlayView: View {
   var body: some View {
-    VStack {
-      Spacer()
-      Text("Some Info")
-      Spacer()
-      Text("📡")
-      Spacer()
-      Text("Blablabla 💬")
-      Spacer()
+    Group {
+      VStack {
+        Text("Some Info")
+
+        Text("📡")
+
+        Text("Blablabla 💬")
+
+      }
+      .navigationBarTitle("Info Screen")
+      .background(Color.gray)
     }
-  .navigationBarTitle("Info Screen")
+    .background(Image("pattern"))
   }
 }
 
